@@ -26,6 +26,21 @@ public class HandlingEventFactory implements Serializable {
     private LocationRepository locationRepository;
 
     /**
+     * Construtor apenas utilizado para testes
+     * @param cargoRepositoryParam
+     * @param voyageRepositoryParam
+     * @param locationRepositoryParm
+     */
+    public HandlingEventFactory(CargoRepository cargoRepositoryParam,
+			VoyageRepository voyageRepositoryParam,
+			LocationRepository locationRepositoryParm) {
+    	
+		cargoRepository = cargoRepositoryParam;
+		voyageRepository = voyageRepositoryParam;
+		locationRepository = locationRepositoryParm;
+	}
+
+	/**
      * @param registrationTime time when this event was received by the system
      * @param completionTime when the event was completed, for example finished
      * loading

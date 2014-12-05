@@ -26,7 +26,17 @@ public class DefaultHandlingEventService implements HandlingEventService {
     private static final Logger logger = Logger.getLogger(
             DefaultHandlingEventService.class.getName());
 
-    @Override
+    public DefaultHandlingEventService(
+			HandlingEventRepository handlingEventRepositoryParam,
+			ApplicationEvents applicationEventsParam,
+			HandlingEventFactory handlingEventFactoryParam) {
+    	
+		handlingEventRepository = handlingEventRepositoryParam;
+		applicationEvents = applicationEventsParam;
+		handlingEventFactory = handlingEventFactoryParam;
+	}
+
+	@Override
     public void registerHandlingEvent(Date completionTime,
             TrackingId trackingId, VoyageNumber voyageNumber, UnLocode unLocode,
             HandlingEvent.Type type) throws CannotCreateHandlingEventException {
