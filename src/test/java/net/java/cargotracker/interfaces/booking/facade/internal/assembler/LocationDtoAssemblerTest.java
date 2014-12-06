@@ -26,11 +26,13 @@ public class LocationDtoAssemblerTest {
 
 		net.java.cargotracker.interfaces.booking.facade.dto.Location dto = dtos
 				.get(0);
-		assertEquals("SESTO", dto.getUnLocode());
-		assertEquals("Stockholm", dto.getName());
-
-		dto = dtos.get(1);
 		assertEquals("DEHAM", dto.getUnLocode());
-		assertEquals("Hamburg", dto.getName());
+		assertEquals("Hamburg (DEHAM)", dto.getName());
+		
+		dto = dtos.get(1);
+		assertEquals("SESTO", dto.getUnLocode());
+		assertEquals("Stockholm (SESTO)", dto.getName());
+
+		
 	}
 }
