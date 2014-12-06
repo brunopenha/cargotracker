@@ -8,7 +8,6 @@ import net.java.cargotracker.domain.model.location.UnLocode;
 import net.java.cargotracker.domain.model.voyage.VoyageNumber;
 import net.java.cargotracker.domain.model.voyage.VoyageRepository;
 import net.java.cargotracker.domain.service.RoutingService;
-import net.java.pathfinder.api.GraphTraversalService;
 import net.java.pathfinder.api.TransitEdge;
 import net.java.pathfinder.api.TransitPath;
 
@@ -21,7 +20,6 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,7 +37,6 @@ public class ExternalRoutingService implements RoutingService {
     @Resource(name = "graphTraversalUrl")
     private String graphTraversalUrl;
     // TODO Can I use injection?
-    @Inject
     private final Client jaxrsClient = ClientBuilder.newClient();
     private WebTarget graphTraversalResource;
     @Inject
@@ -47,7 +44,6 @@ public class ExternalRoutingService implements RoutingService {
     @Inject
     private VoyageRepository voyageRepository;
     // TODO Use injection instead?
-    @Inject
     private static final Logger log = Logger.getLogger(
             ExternalRoutingService.class.getName());
 
@@ -103,19 +99,4 @@ public class ExternalRoutingService implements RoutingService {
                 locationRepository.find(new UnLocode(edge.getToUnLocode())),
                 edge.getFromDate(), edge.getToDate());
     }
-
-	public void setLocationRepository(LocationRepository locationRepositoryParam) {
-		this.locationRepository = locationRepositoryParam;
-		
-	}
-
-	public void setVoyageRepository(VoyageRepository voyageRepositoryParam) {
-		this.voyageRepository = voyageRepositoryParam;
-	}
-
-	public void setGraphTraversalService(
-			GraphTraversalService graphTraversalService) {
-		this.graphTraversalResource = (WebTarget) graphTraversalService; 
-		
-	}
 }

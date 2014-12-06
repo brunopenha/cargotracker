@@ -45,13 +45,13 @@ public class CargoRouteDtoAssemblerTest {
 		net.java.cargotracker.interfaces.booking.facade.dto.Leg legDto = dto
 				.getLegs().get(0);
 		assertEquals("CM001", legDto.getVoyageNumber());
-		assertEquals("Stockholm (SESTO)", legDto.getFrom());
-		assertEquals("CNSHA (Shanghai)", legDto.getTo());
+		assertEquals("SESTO", legDto.getFrom());
+		assertEquals("CNSHA", legDto.getTo());
 
 		legDto = dto.getLegs().get(1);
 		assertEquals("CM001", legDto.getVoyageNumber());
-		assertEquals("Rotterdam (NLRTM)", legDto.getFrom());
-		assertEquals("AUMEL (Melbourne)", legDto.getTo());
+		assertEquals("NLRTM", legDto.getFrom());
+		assertEquals("AUMEL", legDto.getTo());
 	}
 
 	@Test
@@ -64,8 +64,8 @@ public class CargoRouteDtoAssemblerTest {
 		CargoRoute dto = assembler.toDto(cargo);
 
 		assertEquals("XYZ", dto.getTrackingId());
-		assertEquals("Stockholm (SESTO)", dto.getOrigin());
-		assertEquals("Melbourne (AUMEL)", dto.getFinalDestination());
+		assertEquals("Stockholm", dto.getOrigin());
+		assertEquals("Melbourne", dto.getFinalDestination());
 		assertTrue(dto.getLegs().isEmpty());
 	}
 }
